@@ -26,7 +26,7 @@ function Home() {
             <Header />
             <Todohero todos_completed={todos_completed} total_todos={total_todos} />
             <Form setTodos={setTodos} />
-            <Todolist todos={todos} />
+            <Todolist todos={todos} setTodos={setTodos} />
         </div>
     );
 }

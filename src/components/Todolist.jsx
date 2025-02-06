@@ -1,9 +1,9 @@
-function Todolist({ todos }) {
+function Todolist({ todos, setTodos }) {
     return (
         <ol className="todo_list">
             {todos && todos.length > 0 ? (
                 todos?.map((item, index) => (
-                    <Item key={index} item={item} />
+                    <Item key={index} item={item} setTodos={setTodos} />
                 ))
             ) : (
                 <p>Seems lonely in here, what are you up to?</p>
@@ -12,10 +12,20 @@ function Todolist({ todos }) {
     );
 }
 
-function Item({ item }) {
+function Item({ item, setTodos }) {
+    const completeTodo = () => {
+        setTodos((prevTodos) => 
+            prevTodos.map((todo) => {
+                if (todo.id === item.id) {
+                    return { ...todo, is_completed: !todo.is_completed };
+                }
+                return todo;
+            })
+        );
+    };
     return (
         <li id={item?.id} className="todo_item">
-            <button className="todo_items_left">
+            <button className="todo_items_left" onClick={completeTodo}>
                 <svg
                     clipRule="evenodd"
                     fillRule="evenodd"

@@ -4,7 +4,7 @@ function Form({ setTodos }) {
         const value = event.target.elements.todo.value;
         setTodos((prevtodos) => [
             ...prevtodos,
-            { title: value, id: window.crypto.randomUUID(), is_completed: false },
+            { title: value, id: self.crypto.randomUUID(), is_completed: false },
         ])
         // reset the form
         event.target.reset();
